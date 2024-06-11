@@ -3,13 +3,13 @@ local deg_to_radian_koeff = (1/180)*math.pi
 -- class Vector initializer
 Vector={}
 Vector.__index=Vector
-Vector.type="vector"
+Vector.name="Vector"
 --конструктор
 function Vector.new(set_x, set_y)
   -- создаем пустую таблицу
   local vect1 = {}
-  setmetatable(vect1, Vector)
   -- задаем тип таблицы
+  setmetatable(vect1, Vector)
 
   -- ставим координаты
   vect1.x = set_x
@@ -20,18 +20,18 @@ end
 -- '+' overload
 
 Vector.__add = function(vect1, vect2)
-  return Vector.new((vect1.x+vect2.x), (vect1.y+vect2.y))
+  return Vector.new((vect1.x + vect2.x), (vect1.y + vect2.y))
 end
 -- "-" overload
 Vector.__sub = function(vect1, vect2)
-  return Vector.new((vect1.x-vect2.x), (vect1.y-vect2.y))
+  return Vector.new((vect1.x - vect2.x), (vect1.y - vect2.y))
 end
 
 function Vector:length()
-  return (math.sqrt((self.x*self.x)+(self.y*self.y)))
+  return (math.sqrt((self.x * self.x) + (self.y * self.y)))
 end
 
--- УГОЛ ЗАДАЕМ В ГРАДУСАХ
+-- УГОЛ ЗАДАЕМ В ГРАДУСАХ.
 -- вращаем вектор вокруг точки (0, 0)
 function Vector:rotate(theta_degree)
   local theta_radian=theta_degree*deg_to_radian_koeff
@@ -41,7 +41,7 @@ function Vector:rotate(theta_degree)
 end
 
 
--- УГОЛ ЗАДАЕМ В ГРАДУСАХ
+-- УГОЛ ЗАДАЕМ В ГРАДУСАХ.
 -- вращаем вектор вокруг точки "around"
 function Vector:rotate_around(theta, around)
   local sub_x = self.x - around.x
