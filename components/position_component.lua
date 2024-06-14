@@ -1,4 +1,3 @@
-
 -- PositionComponent initializer
 PositionComponent={}
 PositionComponent.__index = PositionComponent

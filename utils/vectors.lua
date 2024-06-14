@@ -47,8 +47,8 @@ function Vector:rotate_around(theta, around)
   local sub_x = self.x - around.x
   local sub_y = self.y - around.y
   local theta =  theta * deg_to_radian_koeff
-  local new_x = sub_x * math.cos(theta) - sub_y * math.sin(theta) + around_x
-  local new_y = sub_x * math.sin(theta) + sub_y * math.cos(theta) + around_y
+  local new_x = sub_x * math.cos(theta) - sub_y * math.sin(theta) + around.x
+  local new_y = sub_x * math.sin(theta) + sub_y * math.cos(theta) + around.y
   return Vector.new(new_x, new_y)
 end
 
@@ -68,8 +68,10 @@ end
 
 --простое умножение вектора на число
 function Vector:scale(coefficient)
-  self.x=self.x*coefficient
-  self.y=self.y*coefficient
+  return Vector.new(
+    self.x*coefficient,
+    self.y*coefficient
+  )
 end
 
 
@@ -97,5 +99,3 @@ function Vector:from_basis(vector, normal_vector)
   local new_y=-(normal_vector.y*self.x)+(vector.y*self.y)
   return {1, 2}
 end
-
-print(type(Vector))

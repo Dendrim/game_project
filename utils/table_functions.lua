@@ -24,3 +24,18 @@ function table.find_and_remove_all(target_table, value)
   end
   return nil
 end
+
+
+function table.contains(tbl, x)
+  if tbl == nil or x == nil then
+    return false
+  end
+
+  local found = false
+  for _, v in pairs(tbl) do
+    if v == x then
+      found = true
+    end
+  end
+  return found
+end
